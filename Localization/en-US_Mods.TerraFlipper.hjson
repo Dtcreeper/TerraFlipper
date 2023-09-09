@@ -1,13 +1,53 @@
 # This file will automatically update with entries for new content after a build and reload
 
 Items: {
-	S: {
-		DisplayName: S
+	BaiBiJuRenZhiFu: {
+		DisplayName: Aegaeon's Axe
+		Tooltip:
+			'''
+			An exquisite piece uncovered in the Kaleidoscope, likely from a distant world. Some say a single swing of this axe is enough to shatter mountains.
+			[c/FFFF00:Thunder]
+			When [c/FFFF00:Thunder resonance] and own HP is at or below 50%, own ATK +160%, own skill damage +250%
+			'''
+	}
+
+	LiuShuiRenJian: {
+		DisplayName: Sabre d'Eau
+		Tooltip:
+			'''
+			An exquisite piece obtained through battle with the Seafang Serpent. This weapon's three prongs are constantly enveloped in a mystical watery energy.
+			[c/0000FF:Water]
+			If [c/0000FF:Water resonance], power flip chance +10%
+			If [c/0000FF:Water resonance], when fever mode, power flip chance +6%
+			'''
+	}
+
+	ShuiShiLongQiang: {
+		DisplayName: Seafang Spear
+		Tooltip:
+			'''
+			An exquisite piece obtained through battle with the Azure Queen. The blade shoots a geyser of water powerful enough to cut through even the strongest metal alloys, leaving glimmering gouges in its wake.
+			[c/0000FF:Water]
+			If self is a [c/0000FF:Water character], for every 1% of own HP remaining, own ATK +1.5% [MAX: +150%]
+			'''
+	}
+
+	JiBanFu: {
+		DisplayName: Ji Ban Fu
 		Tooltip: ""
 	}
 
-	BaiBiJuRenZhiFu: {
-		DisplayName: Bai Bi Ju Ren Zhi Fu
+	JiBanJian: {
+		DisplayName: Ji Ban Jian
 		Tooltip: ""
 	}
 }
+
+Projectiles: {
+	GrayStar.DisplayName: Gray Star
+	GoldStar.DisplayName: Gold Star
+	ColorfulStar.DisplayName: Colorful Star
+}
+
+Damages.BounceDamage.DisplayName: BBB
+UI.Fever: Fever

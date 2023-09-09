@@ -1,0 +1,53 @@
+# This file will automatically update with entries for new content after a build and reload
+
+Items: {
+	BaiBiJuRenZhiFu: {
+		DisplayName: "[c/FFFF00:百臂巨人之斧]"
+		Tooltip:
+			'''
+			深渊之兽掉落的武器。
+			[c/FFFF00:属性：雷]
+			当[c/FFFF00:雷属性共鸣]且自身生命值小于等于50%时，自身攻击力+160%，自身技能伤害+250%
+			'''
+	}
+
+	LiuShuiRenJian: {
+		DisplayName: 流水刃剑
+		Tooltip:
+			'''
+			青之女王掉落的武器。
+			[c/0000FF:属性：水]
+			当[c/0000FF:水属性共鸣]时，强力弹射几率增加10%
+			当[c/0000FF:水属性共鸣]时，当Fever发动时，强力弹射几率增加6%
+			'''
+	}
+
+	ShuiShiLongQiang: {
+		DisplayName: 水蚀龙枪
+		Tooltip:
+			'''
+			水荒龙掉落的武器。
+			[c/0000FF:属性：水]
+			当自身为[c/0000FF:水属性]角色时，自身生命值的剩余量每有1%，自身攻击力+1.5%[最大150%]
+			'''
+	}
+
+	JiBanFu: {
+		// DisplayName: Ji Ban Fu
+		// Tooltip: ""
+	}
+
+	JiBanJian: {
+		// DisplayName: Ji Ban Jian
+		// Tooltip: ""
+	}
+}
+
+Projectiles: {
+	GrayStar.DisplayName: 银星
+	GoldStar.DisplayName: 金星
+	ColorfulStar.DisplayName: 彩星
+}
+
+Damages.BounceDamage.DisplayName: 弹射
+UI.Fever: Fever
