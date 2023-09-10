@@ -1,10 +1,15 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.DamageClasses
 {
-	public class BounceDamage : DamageClass
+	public class PFDamage : DamageClass
 	{
+		public static int PF1D = 4;
+		public static int PF1S = 2;
+		public static int PF2D = 10;
+		public static int PF2S = 5;
+		public static int PFChance = 4;
 		// This is an example damage class designed to demonstrate all the current functionality of the feature and explain how to create one of your own, should you need one.
 		// For information about how to apply stat bonuses to specific damage classes, please instead refer to ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.
 		public override StatInheritanceData GetModifierInheritance(DamageClass damageClass)
@@ -17,6 +22,7 @@ namespace TerraFlipper.Content.DamageClasses
 			if (damageClass == DamageClass.Generic)
 				return StatInheritanceData.Full;
 			return StatInheritanceData.None;
+
 			// Now, what exactly did we just do, you might ask? Well, let's see here...
 			// StatInheritanceData is a struct which you'll need to return one of for any given outcome this method.
 			// Normally, the latter of these two would be written as "StatInheritanceData.None", rather than being typed out by hand...
@@ -48,13 +54,10 @@ namespace TerraFlipper.Content.DamageClasses
 
 		public override bool GetEffectInheritance(DamageClass damageClass)
 		{
+			//收到其他伤害类型特效
 			// This method allows you to make your damage class benefit from and be able to activate other classes' effects (e.g. Spectre bolts, Magma Stone) based on what returns true.
 			// Note that unlike our stat inheritance methods up above, you do not need to account for universal bonuses in this method.
 			// For this example, we'll make our class able to activate melee- and magic-specifically effects.
-			if (damageClass == DamageClass.Melee)
-				return true;
-			if (damageClass == DamageClass.Ranged)
-				return true;
 
 			return false;
 		}
@@ -85,5 +88,6 @@ namespace TerraFlipper.Content.DamageClasses
 			// PLEASE BE AWARE that this hook will NOT be here forever; only until an upcoming revamp to tooltips as a whole comes around.
 			// Once this happens, a better, more versatile explanation of how to pull this off will be showcased, and this hook will be removed.
 		}
+		
 	}
 }

@@ -1,9 +1,9 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.DamageClasses
 {
-	public class BounceDamage : DamageClass
+	public class JiShangDamage : DamageClass
 	{
 		// This is an example damage class designed to demonstrate all the current functionality of the feature and explain how to create one of your own, should you need one.
 		// For information about how to apply stat bonuses to specific damage classes, please instead refer to ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.
@@ -17,6 +17,7 @@ namespace TerraFlipper.Content.DamageClasses
 			if (damageClass == DamageClass.Generic)
 				return StatInheritanceData.Full;
 			return StatInheritanceData.None;
+			
 			// Now, what exactly did we just do, you might ask? Well, let's see here...
 			// StatInheritanceData is a struct which you'll need to return one of for any given outcome this method.
 			// Normally, the latter of these two would be written as "StatInheritanceData.None", rather than being typed out by hand...
@@ -48,14 +49,11 @@ namespace TerraFlipper.Content.DamageClasses
 
 		public override bool GetEffectInheritance(DamageClass damageClass)
 		{
+			//收到其他伤害类型特效
 			// This method allows you to make your damage class benefit from and be able to activate other classes' effects (e.g. Spectre bolts, Magma Stone) based on what returns true.
 			// Note that unlike our stat inheritance methods up above, you do not need to account for universal bonuses in this method.
 			// For this example, we'll make our class able to activate melee- and magic-specifically effects.
-			if (damageClass == DamageClass.Melee)
-				return true;
-			if (damageClass == DamageClass.Ranged)
-				return true;
-
+			
 			return false;
 		}
 

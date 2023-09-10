@@ -41,6 +41,11 @@ Items: {
 		DisplayName: Ji Ban Jian
 		Tooltip: ""
 	}
+
+	LeiMu: {
+		DisplayName: Lei Mu
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -51,3 +56,8 @@ Projectiles: {
 
 Damages.BounceDamage.DisplayName: BBB
 UI.Fever: Fever
+
+Keybinds: {
+	RandomBuff.DisplayName: Random Buff
+	Key1.DisplayName: Key1
+}

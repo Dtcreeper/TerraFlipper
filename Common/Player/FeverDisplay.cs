@@ -26,25 +26,25 @@ namespace TerraFlipper.Common.Player
             // Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
             // UIElement is invisible and has no padding.
             area = new UIElement();
-            area.Left.Set(-area.Width.Pixels - 600, 1f); // Place the resource bar to the left of the hearts.
-            area.Top.Set(30, 0f); // Placing it just a bit below the top of the screen.
-            area.Width.Set(182, 0f); // We will be placing the following 2 UIElements within this 182x60 area.
-            area.Height.Set(60, 0f);
+            area.Left.Set(-area.Width.Pixels - 400, 1f); // Place the resource bar to the left of the hearts.
+            area.Top.Set(20, 0f); // Placing it just a bit below the top of the screen.
+            area.Width.Set(90, 0f); // We will be placing the following 2 UIElements within this 182x60 area.
+            area.Height.Set(40, 0f);
 
-            barFrame = new UIImage(ModContent.Request<Texture2D>("TerraFlipper/Common/Player/FeverDisplayBar")); // Frame of our resource bar
-            barFrame.Left.Set(22, 0f);
+            barFrame = new UIImage(ModContent.Request<Texture2D>("TerraFlipper/Common/Player/FeverBar")); // Frame of our resource bar
+            barFrame.Left.Set(11, 0f);
             barFrame.Top.Set(0, 0f);
-            barFrame.Width.Set(138, 0f);
-            barFrame.Height.Set(34, 0f);
+            barFrame.Width.Set(71, 0f);
+            barFrame.Height.Set(19, 0f);
 
             text = new UIText("0/0", 0.8f); // text to show stat
-            text.Width.Set(138, 0f);
-            text.Height.Set(34, 0f);
+            text.Width.Set(79, 0f);
+            text.Height.Set(19, 0f);
             text.Top.Set(40, 0f);
-            text.Left.Set(0, 0f);
+            text.Left.Set(20, 0f);
 
-            gradientA = new Color(123, 25, 138); // A dark purple
-            gradientB = new Color(187, 91, 201); // A light purple
+            gradientA = new Color(255, 255, 0); 
+            gradientB = new Color(255, 250, 205); 
 
             area.Append(text);
             area.Append(barFrame);
@@ -66,10 +66,10 @@ namespace TerraFlipper.Common.Player
 
             // Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
             Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
-            hitbox.X += 12;
-            hitbox.Width -= 24;
-            hitbox.Y += 8;
-            hitbox.Height -= 16;
+            hitbox.X += 5;
+            hitbox.Width -= 10;
+            hitbox.Y += 3;
+            hitbox.Height -= 6;
 
             // Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
             int left = hitbox.Left;

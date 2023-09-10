@@ -31,6 +31,7 @@ namespace TerraFlipper.Content.Weapons
             Item.shoot = ModContent.ProjectileType<GrayStar>();
             Item.shootSpeed = 5f;
             Item.attackSpeedOnlyAffectsWeaponAnimation = false;
+            
         }
 
         public override void AddRecipes()
@@ -42,27 +43,34 @@ namespace TerraFlipper.Content.Weapons
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            double crit = player.GetCritChance(ModContent.GetInstance<BounceDamage>());
-            Random random = new Random();
+			double crit = player.GetCritChance(ModContent.GetInstance<BounceDamage>());
+			Random random = new Random();
             double r = random.NextDouble();
+            //攻刃乘区
+            int ndamage = damage;
+			//判断强力弹射
+			if (r <= crit / (PFDamage.PFChance + crit))
+			{
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar>(), (int)(damage * PFDamage.PF2D), knockback);
+			}
+			else if (r <= crit)
+			{
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1S, ModContent.ProjectileType<GoldStar>(), (int)(damage * PFDamage.PF1D), knockback);
+			}
+			else
+			{
+				Projectile.NewProjectile(source, position, velocity, type, damage, knockback); ;
+			}
+			return false;
 
-            int ndamage = (int)(damage * 2.6);//攻击力+160%
-            if (r <= crit / (4 + crit))
-            {
-                Projectile.NewProjectile(source, position, velocity * 5, ModContent.ProjectileType<ColorfulStar>(), (int)(ndamage * 10), knockback);
-            }
-            else if (r <= crit)
-            {
-                Projectile.NewProjectile(source, position, velocity * 2, ModContent.ProjectileType<GoldStar>(), (int)(ndamage * 4), knockback);
-            }
-            else
-            {
-                Projectile.NewProjectile(source, position, velocity, type, ndamage, knockback); ;
-            }
-            return false;
+		}
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            damage += 160 / 100f;
 
-        }
+		}
 
 
-    }
+
+	}
 }
