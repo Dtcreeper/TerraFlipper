@@ -16,4 +16,9 @@
   <ItemGroup>
     <Folder Include="Content\新文件夹\" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ProjectStarlight.Interchange">
+      <HintPath>lib\ProjectStarlight.Interchange.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

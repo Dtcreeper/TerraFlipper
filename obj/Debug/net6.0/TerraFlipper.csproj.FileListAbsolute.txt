@@ -178,3 +178,6 @@ C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\TerraFl
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\TerraFlipper\obj\Debug\net6.0\refint\TerraFlipper.dll
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\TerraFlipper\obj\Debug\net6.0\TerraFlipper.pdb
 C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\TerraFlipper\obj\Debug\net6.0\ref\TerraFlipper.dll
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\TerraFlipper\bin\Debug\net6.0\ProjectStarlight.Interchange.dll
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\TerraFlipper\bin\Debug\net6.0\ProjectStarlight.Interchange.pdb
+C:\Users\Administrator\Documents\My Games\Terraria\tModLoader\ModSources\TerraFlipper\bin\Debug\net6.0\ProjectStarlight.Interchange.xml

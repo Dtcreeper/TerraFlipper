@@ -38,6 +38,7 @@
           "MP3Sharp": "1.0.0.0",
           "Newtonsoft.Json": "12.0.0.0",
           "NVorbis": "0.10.0.3",
+          "ProjectStarlight.Interchange": "1.0.0.0",
           "RailSDK.Net": "1.0.0.0",
           "ReLogic": "1.0.0.0",
           "Steamworks.NET": "20.1.0.0",
@@ -503,6 +504,14 @@
           }
         }
       },
+      "ProjectStarlight.Interchange/1.0.0.0": {
+        "runtime": {
+          "ProjectStarlight.Interchange.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "RailSDK.Net/1.0.0.0": {
         "runtime": {
           "RailSDK.Net.dll": {
@@ -835,6 +844,11 @@
       "sha512": ""
     },
     "NVorbis/0.10.0.3": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ProjectStarlight.Interchange/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

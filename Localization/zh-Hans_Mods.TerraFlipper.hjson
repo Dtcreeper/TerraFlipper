@@ -52,10 +52,15 @@ Projectiles: {
 	GrayStar.DisplayName: 银星
 	GoldStar.DisplayName: 金星
 	ColorfulStar.DisplayName: 彩星
+	// LeiMuJiNeng.DisplayName: Lei Mu Ji Neng
 }
 
 Damages.BounceDamage.DisplayName: 弹射
-UI.Fever: Fever
+
+UI: {
+	Fever: Fever
+	// Energy1: Mods.TerraFlipper.UI.Energy1
+}
 
 Keybinds: {
 	// RandomBuff.DisplayName: Random Buff

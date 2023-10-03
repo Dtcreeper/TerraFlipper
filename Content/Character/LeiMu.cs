@@ -12,7 +12,6 @@ namespace TerraFlipper.Content.Character
 {
 	public class LeiMu : ModItem
 	{
-		public static int CR = 114514;
 		// By declaring these here, changing the values will alter the effect, and the tooltip
 		public static readonly int Gongren = 100;
 		public static readonly int Jishang = 150;
@@ -33,12 +32,9 @@ namespace TerraFlipper.Content.Character
 			float hp = Main.LocalPlayer.statLife / Main.LocalPlayer.statLifeMax2;
 			player.GetDamage(ModContent.GetInstance<BounceDamage>()) += Gongren * hp / 100f;
 			player.GetDamage(ModContent.GetInstance<JiShangDamage>()) += Jishang * hp / 100f;
-			//三个按键控制技能
-			if (Key1.Jineng1.JustPressed & Main.LocalPlayer.GetModPlayer<Energy1>().CurrentEnergy >= 0)
-			{
-				Main.LocalPlayer.GetModPlayer<Energy1>().ResetEffects();
-				FangJiNeng(player);
-			}
+			//按键控制技能
+			// & Main.LocalPlayer.GetModPlayer<Energy1>().CurrentEnergy >= 0
+			
 		}
 		public static string ShuXing()
 		{
