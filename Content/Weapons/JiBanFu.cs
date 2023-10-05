@@ -29,7 +29,7 @@ namespace TerraFlipper.Content.Weapons
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.crit = -4;
-			Item.shoot = ModContent.ProjectileType<GrayStar>();
+			Item.shoot = ModContent.ProjectileType<GrayStar_Shui>();
 			Item.shootSpeed = 5f;
 			Item.attackSpeedOnlyAffectsWeaponAnimation = false;
 		}
@@ -50,17 +50,22 @@ namespace TerraFlipper.Content.Weapons
 			//判断强力弹射
 			if (r <= crit / (PFDamage.PFChance + crit))
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar>(), (int)(damage * PFDamage.PF2D), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D), knockback);
 			}
 			else if (r <= crit)
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1S, ModContent.ProjectileType<GoldStar>(), (int)(damage * PFDamage.PF1D), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1S, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D), knockback);
 			}
 			else
 			{
 				Projectile.NewProjectile(source, position, velocity, type, damage, knockback); ;
 			}
 			return false;
+		}
+		//技伤增加
+		public override void HoldItem(Player player)
+		{
+			player.GetDamage(ModContent.GetInstance<JiShangDamage>()) += 2.8f;
 		}
 
 

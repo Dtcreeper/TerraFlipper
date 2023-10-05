@@ -16,6 +16,15 @@ namespace TerraFlipper.Content.DamageClasses
 			// Generic, on the other hand, scales off of all universal stat bonuses and nothing else; it's the base damage class upon which all others that aren't Default are built.
 			if (damageClass == DamageClass.Generic)
 				return StatInheritanceData.Full;
+			if (damageClass == ModContent.GetInstance<BounceDamage>())//乘算
+				return new StatInheritanceData
+				(
+					damageInheritance: 1f * Main.LocalPlayer.GetDamage(ModContent.GetInstance<JiShangDamage>()).ApplyTo(1000) / 1000f,
+					critChanceInheritance: 1f,
+					attackSpeedInheritance: 1f,
+					armorPenInheritance: 1f,
+					knockbackInheritance: 1f
+				);
 			return StatInheritanceData.None;
 
 			// Now, what exactly did we just do, you might ask? Well, let's see here...

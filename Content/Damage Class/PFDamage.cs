@@ -5,11 +5,11 @@ namespace TerraFlipper.Content.DamageClasses
 {
 	public class PFDamage : DamageClass
 	{
-		public static int PF1D = 4;
-		public static int PF1S = 2;
-		public static int PF2D = 10;
-		public static int PF2S = 5;
-		public static int PFChance = 4;
+		public static readonly int PF1D = 4;
+		public static readonly int PF1S = 2;
+		public static readonly int PF2D = 10;
+		public static readonly int PF2S = 5;
+		public static readonly int PFChance = 4;
 		// This is an example damage class designed to demonstrate all the current functionality of the feature and explain how to create one of your own, should you need one.
 		// For information about how to apply stat bonuses to specific damage classes, please instead refer to ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.
 		public override StatInheritanceData GetModifierInheritance(DamageClass damageClass)
@@ -21,6 +21,15 @@ namespace TerraFlipper.Content.DamageClasses
 			// Generic, on the other hand, scales off of all universal stat bonuses and nothing else; it's the base damage class upon which all others that aren't Default are built.
 			if (damageClass == DamageClass.Generic)
 				return StatInheritanceData.Full;
+			if (damageClass == ModContent.GetInstance<BounceDamage>())//乘算
+				return new StatInheritanceData
+				(
+					damageInheritance: 1f * Main.LocalPlayer.GetDamage(ModContent.GetInstance<JiShangDamage>()).ApplyTo(1000) / 1000f,
+					critChanceInheritance: 1f,
+					attackSpeedInheritance: 1f,
+					armorPenInheritance: 1f,
+					knockbackInheritance: 1f
+				);
 			return StatInheritanceData.None;
 
 			// Now, what exactly did we just do, you might ask? Well, let's see here...

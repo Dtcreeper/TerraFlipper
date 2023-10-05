@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TerraFlipper\\TerraFlipper.csproj",
         "projectName": "TerraFlipper",
         "projectPath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TerraFlipper\\TerraFlipper.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "E:\\VS2022C\\Shared\\NuGetPackages",
         "outputPath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TerraFlipper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [

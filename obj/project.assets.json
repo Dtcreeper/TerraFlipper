@@ -1,37 +1,16 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {
-      "tModLoader.CodeAssist/0.1.5": {
-        "type": "package"
-      }
-    }
+    "net6.0": {}
   },
-  "libraries": {
-    "tModLoader.CodeAssist/0.1.5": {
-      "sha512": "Sg/jKEg/z5eN+Cdi3/9CU4JfJwvXHVH+UDJf4Lipo26uTa+guLLJXH1XDJNPShTFwKK8jMUYbthINP4QhsgHSA==",
-      "type": "package",
-      "path": "tmodloader.codeassist/0.1.5",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NugetIcon.png",
-        "analyzers/dotnet/cs/tModLoader.CodeAssist.dll",
-        "tmodloader.codeassist.0.1.5.nupkg.sha512",
-        "tmodloader.codeassist.nuspec",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
     "net6.0": [
       "tModLoader.CodeAssist >= 0.1.*"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "E:\\VS2022C\\Shared\\NuGetPackages": {},
     "D:\\Program Files\\VS 2022 Community\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -40,7 +19,7 @@
       "projectUniqueName": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TerraFlipper\\TerraFlipper.csproj",
       "projectName": "TerraFlipper",
       "projectPath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TerraFlipper\\TerraFlipper.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "packagesPath": "E:\\VS2022C\\Shared\\NuGetPackages",
       "outputPath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TerraFlipper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
@@ -99,5 +78,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "本地源“D:\\Program Files\\VS 2022 Community\\Shared\\NuGetPackages”不存在。",
+      "libraryId": "tModLoader.CodeAssist"
+    }
+  ]
 }

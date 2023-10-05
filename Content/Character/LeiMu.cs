@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using TerraFlipper.Common.Global;
 using TerraFlipper.Common.Key;
 using TerraFlipper.Common.Player;
 using TerraFlipper.Content.DamageClasses;
@@ -10,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.Character
 {
-	public class LeiMu : ModItem
+	public class LeiMu : FlipperAccessory
 	{
 		// By declaring these here, changing the values will alter the effect, and the tooltip
 		public static readonly int Gongren = 100;
@@ -49,9 +50,18 @@ namespace TerraFlipper.Content.Character
 		}
 		public static void FangJiNeng(Player player)
 		{
-			int damage = 200 + (int)player.GetTotalDamage(ModContent.GetInstance<BounceDamage>()).Flat;
-			damage = (int)player.GetTotalDamage(ModContent.GetInstance<JiShangDamage>()).ApplyTo(damage);
-			Projectile.NewProjectile(player.GetSource_FromThis(), Main.MouseScreen, Vector2.Zero, ModContent.ProjectileType<LeiMuJiNeng>(), damage,10);
+			Vector2 p = Main.MouseScreen + Main.screenPosition - player.position;
+			Vector2 velocity = 20f * p / p.Length();
+			int damage = (int)(player.GetTotalDamage(ModContent.GetInstance<ShuiDamage>()).ApplyTo(100) * player.GetTotalDamage(ModContent.GetInstance<JiShangDamage>()).ApplyTo(1000) / 1000);
+			Projectile.NewProjectile(player.GetSource_FromThis(), player.position, velocity, ModContent.ProjectileType<LeiMuJiNeng>(), damage, 0);
+		}
+		public override int GetElement()
+		{
+			return 2;
+		}
+		public override string ToString()
+		{
+			return "";
 		}
 
 	}

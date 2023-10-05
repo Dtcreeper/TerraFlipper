@@ -32,7 +32,7 @@ namespace TerraFlipper.Content.ProjectTiles
 			Projectile.friendly = true; // Can the projectile deal damage to enemies?
 										// 该弹射物能否对敌人造成伤害？
 
-			Projectile.DamageType = ModContent.GetInstance<JiShangDamage>(); // 伤害类型
+			Projectile.DamageType = ModContent.GetInstance<ShuiDamage>(); // 伤害类型
 
 
 			Projectile.ignoreWater = false; // Does the projectile's speed be influenced by water?
@@ -59,7 +59,7 @@ namespace TerraFlipper.Content.ProjectTiles
 		public override Color? GetAlpha(Color lightColor)
 		{
 			// return Color.White;
-			return new Color(180, 180, 180, 0) * Projectile.Opacity;
+			return new Color(200, 200, 200, 0) * Projectile.Opacity;
 		}
 
 		public override void AI()
@@ -80,7 +80,7 @@ namespace TerraFlipper.Content.ProjectTiles
 
 			// Slow down
 			// 减慢速度
-			Projectile.velocity *= 0.98f;
+			Projectile.velocity *= 0.96f;
 
 			// Loop through the 4 animation frames, spending 5 ticks on each
 			// Projectile.frame — index of current frame
@@ -183,7 +183,7 @@ namespace TerraFlipper.Content.ProjectTiles
 
 			// Applying lighting and draw current frame
 			// 应用光照并绘制当前帧
-			Color drawColor = Projectile.GetAlpha(lightColor);
+			Color drawColor = lightColor;
 			Main.EntitySpriteDraw(texture,
 				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
 				sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);

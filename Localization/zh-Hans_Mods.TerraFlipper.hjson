@@ -46,6 +46,21 @@ Items: {
 		// DisplayName: Lei Mu
 		// Tooltip: ""
 	}
+
+	ShuiShiLongShu: {
+		// DisplayName: Shui Shi Long Shu
+		// Tooltip: ""
+	}
+
+	FlipperAccessory: {
+		// DisplayName: Flipper Accessory
+		// Tooltip: ""
+	}
+
+	LiYu: {
+		// DisplayName: Li Yu
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -53,6 +68,7 @@ Projectiles: {
 	GoldStar.DisplayName: 金星
 	ColorfulStar.DisplayName: 彩星
 	// LeiMuJiNeng.DisplayName: Lei Mu Ji Neng
+	// LiYuJiNeng.DisplayName: Li Yu Ji Neng
 }
 
 Damages.BounceDamage.DisplayName: 弹射
@@ -65,4 +81,16 @@ UI: {
 Keybinds: {
 	// RandomBuff.DisplayName: Random Buff
 	// Key1.DisplayName: Key1
+}
+
+Buffs: {
+	PF_100: {
+		// DisplayName: P F_100
+		// Description: Mods.TerraFlipper.Buffs.PF_100.Description
+	}
+
+	PF_20: {
+		// DisplayName: P F_20
+		// Description: Mods.TerraFlipper.Buffs.PF_20.Description
+	}
 }

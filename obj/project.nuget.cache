@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "uxcs2CbCY1Jt6Wh5KtamCJtCTCynnTOBTaYUJSoFfYdC7VD95iWSBc5qkwMIKDUNylmS4gfv4XKpbhq2+NsnRQ==",
-  "success": true,
+  "dgSpecHash": "lZrlUOPCk5IYio+JW/PmmjZNcuVo9icXs6eoNZytNTLXsPBOpdvjGTmSeABydkZcJpa/bPYmaMHxyAW86oyWlg==",
+  "success": false,
   "projectFilePath": "C:\\Users\\Administrator\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\TerraFlipper\\TerraFlipper.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
-  ],
-  "logs": []
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "本地源“D:\\Program Files\\VS 2022 Community\\Shared\\NuGetPackages”不存在。",
+      "libraryId": "tModLoader.CodeAssist"
+    }
+  ]
 }
