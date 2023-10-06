@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.DamageClasses
 {
-	public class BounceDamage : DamageClass
+	public class GongRenDamage : DamageClass
 	{
 		// This is an example damage class designed to demonstrate all the current functionality of the feature and explain how to create one of your own, should you need one.
 		// For information about how to apply stat bonuses to specific damage classes, please instead refer to ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.
@@ -30,6 +30,10 @@ namespace TerraFlipper.Content.DamageClasses
 		{
 
 			return true;
+		}
+		public static float JiaCheng()
+		{
+			return Main.LocalPlayer.GetTotalDamage(ModContent.GetInstance<GongRenDamage>()).ApplyTo(1000) / 1000f;
 		}
 	}
 }

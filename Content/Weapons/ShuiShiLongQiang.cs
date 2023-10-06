@@ -16,7 +16,7 @@ namespace TerraFlipper.Content.Weapons
 		public override void SetDefaults()
 		{
 			Item.damage = 27;
-			Item.DamageType = ModContent.GetInstance<BounceDamage>();
+			Item.DamageType = ModContent.GetInstance<GongRenDamage>();
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 75;
@@ -28,7 +28,7 @@ namespace TerraFlipper.Content.Weapons
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.crit = -4;
-			Item.shoot = ModContent.ProjectileType<GrayStar>();
+			Item.shoot = ModContent.ProjectileType<GrayStar_Shui>();
 			Item.shootSpeed = 5f;
 			Item.attackSpeedOnlyAffectsWeaponAnimation = false;
 		}
@@ -42,27 +42,28 @@ namespace TerraFlipper.Content.Weapons
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			double crit = player.GetCritChance(ModContent.GetInstance<BounceDamage>());
+			double crit = player.GetCritChance(ModContent.GetInstance<GongRenDamage>());
 			Random random = new Random();
 			double r = random.NextDouble();
+			damage = player.GetWeaponDamage(this.Entity);
 			if (r <= crit / (4 + crit))
 			{
-				Projectile.NewProjectile(source, position, velocity * 5, ModContent.ProjectileType<ColorfulStar>(), (int)(damage * 10), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
 			}
 			else if (r <= crit)
 			{
-				Projectile.NewProjectile(source, position, velocity * 2, ModContent.ProjectileType<GoldStar>(), (int)(damage * 4), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
 			}
 			else
 			{
-				Projectile.NewProjectile(source, position, velocity, type, damage, knockback); ;
+				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ZhiJiDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback); ;
 			}
 			return false;
 		}
 		//被动
 		public override void HoldItem(Player player)
 		{
-			player.GetDamage(ModContent.GetInstance<BounceDamage>()) += 1.5f * player.statLife / player.statLifeMax2;
+			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += 1.5f * player.statLife / player.statLifeMax2;
 		}
 
 	}

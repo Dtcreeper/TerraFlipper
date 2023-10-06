@@ -17,7 +17,7 @@ namespace TerraFlipper.Content.Weapons
 		{
 			Random random = new Random();
 			Item.damage = 415;
-			Item.DamageType = ModContent.GetInstance<BounceDamage>();
+			Item.DamageType = ModContent.GetInstance<GongRenDamage>();
 			Item.width = 0;
 			Item.height = 0;
 			Item.useTime = 70;
@@ -44,7 +44,7 @@ namespace TerraFlipper.Content.Weapons
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 
-			double crit = player.GetCritChance(ModContent.GetInstance<BounceDamage>());
+			double crit = player.GetCritChance(ModContent.GetInstance<GongRenDamage>());
 			Random random = new Random();
 			double r = random.NextDouble();
 			//判断强力弹射

@@ -16,7 +16,7 @@ namespace TerraFlipper.Content.Weapons
 		public override void SetDefaults()
 		{
 			Item.damage = 195;
-			Item.DamageType = ModContent.GetInstance<BounceDamage>();
+			Item.DamageType = ModContent.GetInstance<GongRenDamage>();
 			Item.width = 44;
 			Item.height = 44;
 			Item.useTime = 16;
@@ -28,7 +28,7 @@ namespace TerraFlipper.Content.Weapons
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.crit = -4;
-			Item.shoot = ModContent.ProjectileType<GrayStar>();
+			Item.shoot = ModContent.ProjectileType<GrayStar_Shui>();
 			Item.shootSpeed = 5f;
 			Item.attackSpeedOnlyAffectsWeaponAnimation = false;
 
@@ -43,17 +43,17 @@ namespace TerraFlipper.Content.Weapons
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			double crit = player.GetCritChance(ModContent.GetInstance<BounceDamage>());
+			double crit = player.GetCritChance(ModContent.GetInstance<GongRenDamage>());
 			Random random = new Random();
 			double r = random.NextDouble();
 			//判断强力弹射
 			if (r <= crit / (PFDamage.PFChance + crit))
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar>(), (int)(damage * PFDamage.PF2D), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D), knockback);
 			}
 			else if (r <= crit)
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1S, ModContent.ProjectileType<GoldStar>(), (int)(damage * PFDamage.PF1D), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1S, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D), knockback);
 			}
 			else
 			{
@@ -66,7 +66,7 @@ namespace TerraFlipper.Content.Weapons
 		//增加攻刃
 		public override void HoldItem(Player player)
 		{
-			player.GetDamage(ModContent.GetInstance<BounceDamage>()) += 1.6f;
+			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += 1.6f;
 		}
 
 

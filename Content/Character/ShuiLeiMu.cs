@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.Character
 {
-	public class LeiMu : FlipperAccessory
+	public class ShuiLeiMu : FlipperAccessory
 	{
 		// By declaring these here, changing the values will alter the effect, and the tooltip
 		public static readonly int Gongren = 100;
@@ -29,12 +29,10 @@ namespace TerraFlipper.Content.Character
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			//技伤+150（浑身），攻刃+50（浑身），
+			//技伤+150（浑身），攻刃+100（浑身），
 			float hp = Main.LocalPlayer.statLife / Main.LocalPlayer.statLifeMax2;
-			player.GetDamage(ModContent.GetInstance<BounceDamage>()) += Gongren * hp / 100f;
+			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += Gongren * hp / 100f;
 			player.GetDamage(ModContent.GetInstance<JiShangDamage>()) += Jishang * hp / 100f;
-			//按键控制技能
-			// & Main.LocalPlayer.GetModPlayer<Energy1>().CurrentEnergy >= 0
 			
 		}
 		public static string ShuXing()
@@ -52,17 +50,12 @@ namespace TerraFlipper.Content.Character
 		{
 			Vector2 p = Main.MouseScreen + Main.screenPosition - player.position;
 			Vector2 velocity = 20f * p / p.Length();
-			int damage = (int)(player.GetTotalDamage(ModContent.GetInstance<ShuiDamage>()).ApplyTo(100) * player.GetTotalDamage(ModContent.GetInstance<JiShangDamage>()).ApplyTo(1000) / 1000);
+			int damage = (int)(player.GetTotalDamage(ModContent.GetInstance<ShuiDamage>()).ApplyTo(100) * GongRenDamage.JiaCheng()*JiShangDamage.JiaCheng());
 			Projectile.NewProjectile(player.GetSource_FromThis(), player.position, velocity, ModContent.ProjectileType<LeiMuJiNeng>(), damage, 0);
 		}
 		public override int GetElement()
 		{
 			return 2;
 		}
-		public override string ToString()
-		{
-			return "";
-		}
-
 	}
 }

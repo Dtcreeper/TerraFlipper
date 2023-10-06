@@ -10,7 +10,11 @@ namespace TerraFlipper.Common.Buffs
 		public override LocalizedText Description => base.Description.WithFormatArgs(PF);
 		public override void Update(Terraria.Player player, ref int buffIndex)
 		{
-			player.GetCritChance(ModContent.GetInstance<BounceDamage>()) += PF;//属性修改
+			player.GetCritChance(ModContent.GetInstance<GongRenDamage>()) += PF;//属性修改
+		}
+		public override bool ReApply(Terraria.Player player, int time, int buffIndex)
+		{
+			return false;
 		}
 	}
 }

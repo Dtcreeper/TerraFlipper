@@ -14,17 +14,6 @@ namespace TerraFlipper.Content.DamageClasses
 			// Default is, you guessed it, the default damage class. It doesn't scale off of any class-specific stat bonuses or universal stat bonuses.
 			// There are a number of items and projectiles that use this, such as thrown waters and the Bone Glove's bones.
 			// Generic, on the other hand, scales off of all universal stat bonuses and nothing else; it's the base damage class upon which all others that aren't Default are built.
-			if (damageClass == DamageClass.Generic)
-				return StatInheritanceData.Full;
-			if (damageClass == ModContent.GetInstance<BounceDamage>())//乘算
-				return new StatInheritanceData
-				(
-					damageInheritance: 1f * Main.LocalPlayer.GetDamage(ModContent.GetInstance<JiShangDamage>()).ApplyTo(1000) / 1000f,
-					critChanceInheritance: 1f,
-					attackSpeedInheritance: 1f,
-					armorPenInheritance: 1f,
-					knockbackInheritance: 1f
-				);
 			return StatInheritanceData.None;
 
 			// Now, what exactly did we just do, you might ask? Well, let's see here...
@@ -91,6 +80,10 @@ namespace TerraFlipper.Content.DamageClasses
 			return true;
 			// PLEASE BE AWARE that this hook will NOT be here forever; only until an upcoming revamp to tooltips as a whole comes around.
 			// Once this happens, a better, more versatile explanation of how to pull this off will be showcased, and this hook will be removed.
+		}
+		public static float JiaCheng()
+		{
+			return Main.LocalPlayer.GetTotalDamage(ModContent.GetInstance<ZhiJiDamage>()).ApplyTo(1000) / 1000f;
 		}
 	}
 }

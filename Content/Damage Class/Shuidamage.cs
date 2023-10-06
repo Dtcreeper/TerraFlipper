@@ -9,11 +9,7 @@ namespace TerraFlipper.Content.DamageClasses
 		// For information about how to apply stat bonuses to specific damage classes, please instead refer to ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.
 		public override StatInheritanceData GetModifierInheritance(DamageClass damageClass)
 		{
-			
-			if (damageClass == DamageClass.Generic)
-				return StatInheritanceData.Full;
 			return StatInheritanceData.None;
-			
 		}
 
 		public override bool GetEffectInheritance(DamageClass damageClass)
@@ -41,6 +37,10 @@ namespace TerraFlipper.Content.DamageClasses
 
 			return true;
 			
+		}
+		public static float JiaCheng()
+		{
+			return Main.LocalPlayer.GetTotalDamage(ModContent.GetInstance<ShuiDamage>()).ApplyTo(1000) / 1000f;
 		}
 	}
 }

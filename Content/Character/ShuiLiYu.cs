@@ -16,7 +16,7 @@ using TerraFlipper.Common.Buffs;
 
 namespace TerraFlipper.Content.Character
 {
-	public class LiYu : FlipperAccessory
+	public class ShuiLiYu : FlipperAccessory
 	{
 		// Fever状态中给予自身200攻刃100PF伤害。主动技给予自身20PF几率持续20秒。
 		public static readonly int Gongren = 200;
@@ -34,7 +34,7 @@ namespace TerraFlipper.Content.Character
 		{
 			if (Fever.IsFever())
 			{
-				player.GetDamage(ModContent.GetInstance<BounceDamage>()) += Gongren/100f;
+				player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += Gongren/100f;
 				player.GetDamage(ModContent.GetInstance<PFDamage>()) += PF/100f;
 			}
 		}

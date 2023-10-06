@@ -9,22 +9,20 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.Weapons
 {
-	public class BaiBiJuRenZhiFu : ModItem
+	public class ChaoShuiZhua : ModItem
 	{
-		// The Display Name and Tooltip of this item can be edited in the Localization/en-US_Mods.TerraFlipper.hjson file.
-
 		public override void SetDefaults()
 		{
-			Item.damage = 50;
+			Item.damage = 35;
 			Item.DamageType = ModContent.GetInstance<GongRenDamage>();
-			Item.width = 40;
+			Item.width = 34;
 			Item.height = 40;
-			Item.useTime = 50;
-			Item.useAnimation = 50;
-			Item.useStyle = ItemUseStyleID.Swing;
+			Item.useTime = 25;
+			Item.useAnimation = 25;
+			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 6;
-			Item.value = 100000;
-			Item.rare = ItemRarityID.Blue;
+			Item.value = 50000;
+			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.crit = -4;
@@ -36,7 +34,7 @@ namespace TerraFlipper.Content.Weapons
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
+			recipe.AddIngredient(ItemID.DirtBlock, 1);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
@@ -45,32 +43,40 @@ namespace TerraFlipper.Content.Weapons
 			double crit = player.GetCritChance(ModContent.GetInstance<GongRenDamage>());
 			Random random = new Random();
 			double r = random.NextDouble();
-
-			if (r <= crit / (PFDamage.PFChance + crit))
+			damage = player.GetWeaponDamage(this.Entity);
+			if (r <= crit / (4 + crit))
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
 			}
 			else if (r <= crit)
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1S, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
 			}
 			else
 			{
-				Projectile.NewProjectile(source, position, velocity, type, damage, knockback); ;
+				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ZhiJiDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback); ;
 			}
 			return false;
-
 		}
 		//被动
 		public override void HoldItem(Player player)
 		{
-			if (player.statLife / player.statLifeMax2 <= 0.5)
+			//每有一个水属性角色+75攻刃
+			int a = 0;
+			if (player.armor[3].ToString().Contains("Shui"))
 			{
-				player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += 1.6f;
-				player.GetDamage(ModContent.GetInstance<JiShangDamage>()) += 2.5f;
+				a += 1;
 			}
+			if (player.armor[4].ToString().Contains("Shui"))
+			{
+				a += 1;
+			}
+			if (player.armor[5].ToString().Contains("Shui"))
+			{
+				a += 1;
+			}
+			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += a*0.75f;
 		}
-
 
 	}
 }

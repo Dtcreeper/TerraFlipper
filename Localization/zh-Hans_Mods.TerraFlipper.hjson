@@ -61,6 +61,31 @@ Items: {
 		// DisplayName: Li Yu
 		// Tooltip: ""
 	}
+
+	ChaoShuiZhua: {
+		// DisplayName: Chao Shui Zhua
+		// Tooltip: ""
+	}
+
+	ShuiLeiMu: {
+		// DisplayName: Shui Lei Mu
+		// Tooltip: ""
+	}
+
+	ShuiLiYu: {
+		// DisplayName: Shui Li Yu
+		// Tooltip: ""
+	}
+
+	ShuiPangXieJinBi: {
+		// DisplayName: Shui Pang Xie Jin Bi
+		// Tooltip: ""
+	}
+
+	ShuiPangXieZiBi: {
+		// DisplayName: Shui Pang Xie Zi Bi
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -69,6 +94,10 @@ Projectiles: {
 	ColorfulStar.DisplayName: 彩星
 	// LeiMuJiNeng.DisplayName: Lei Mu Ji Neng
 	// LiYuJiNeng.DisplayName: Li Yu Ji Neng
+	// ColorfulStar_Shui.DisplayName: Colorful Star_ Shui
+	// GoldStar_Shui.DisplayName: Gold Star_ Shui
+	// GrayStar_Shui.DisplayName: Gray Star_ Shui
+	// ShuiBaoDan.DisplayName: Shui Bao Dan
 }
 
 Damages.BounceDamage.DisplayName: 弹射
@@ -93,4 +122,9 @@ Buffs: {
 		// DisplayName: P F_20
 		// Description: Mods.TerraFlipper.Buffs.PF_20.Description
 	}
+}
+
+NPCs: {
+	// ShuiXiaoPangXie.DisplayName: Shui Xiao Pang Xie
+	// ShuiPangXie.DisplayName: Shui Pang Xie
 }
