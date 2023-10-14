@@ -61,7 +61,7 @@ namespace TerraFlipper.Common.Player
 		{
 			base.DrawSelf(spriteBatch);
 			// Calculate quotient
-			float quotient = (float)Main.LocalPlayer.GetModPlayer<Energy1>().CurrentEnergy / Main.LocalPlayer.GetModPlayer<Energy1>().CurrentEnergy; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
+			float quotient = (float)Main.LocalPlayer.GetModPlayer<Energy1>().CurrentEnergy / Main.LocalPlayer.GetModPlayer<Energy1>().DefaultEnergyMax; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
 			quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
 
 			// Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.

@@ -39,7 +39,7 @@ namespace TerraFlipper.Common.Player
 		}
 
 		// We need this to ensure that regeneration rate and maximum amount are reset to default values after increasing when conditions are no longer satisfied (e.g. we unequip an accessory that increaces our recource)
-		private void ResetVariables()
+		public void ResetVariables()
 		{
 			FeverCurrent = 0;
 			FeverMode = false;

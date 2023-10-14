@@ -1,13 +1,13 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.ModLoader;
-using System;
 
 namespace TerraFlipper.Common.Player
 {
 	public class Energy1 : ModPlayer
 	{
 		public float CurrentEnergy;
-		public  int DefaultEnergyMax = 1000; 
+		public int DefaultEnergyMax = 1000;
 		public float DeafaultEnergyIncrease = 15;
 		public override void Initialize()
 		{
@@ -16,7 +16,7 @@ namespace TerraFlipper.Common.Player
 
 		public override void ResetEffects()
 		{
-			ResetVariables();
+			//ResetVariables();
 		}
 
 		public override void UpdateDead()
@@ -25,7 +25,7 @@ namespace TerraFlipper.Common.Player
 		}
 
 		// We need this to ensure that regeneration rate and maximum amount are reset to default values after increasing when conditions are no longer satisfied (e.g. we unequip an accessory that increaces our recource)
-		private void ResetVariables()
+		public void ResetVariables()
 		{
 			CurrentEnergy = 0;
 		}
@@ -34,16 +34,22 @@ namespace TerraFlipper.Common.Player
 		{
 			UpdateResource();
 		}
-
 		public override void PostUpdate()
 		{
 			CapResourceGodMode();
+
 		}
 
 		// Lets do all our logic for the custom resource here, such as limiting it, increasing it and so on.
 		private void UpdateResource()
 		{
-			CurrentEnergy += Main.LocalPlayer.velocity.Length()/40;
+			CurrentEnergy += (float)(Main.LocalPlayer.velocity.Length()/35);
+			if (CurrentEnergy >= DefaultEnergyMax)
+			{
+				CurrentEnergy = DefaultEnergyMax;
+			}
+			
+			
 		}
 
 		private void CapResourceGodMode()

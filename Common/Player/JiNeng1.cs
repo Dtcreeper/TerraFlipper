@@ -1,12 +1,7 @@
-﻿using System;
-using TerraFlipper.Common.Key;
+﻿using TerraFlipper.Common.Key;
 using TerraFlipper.Content.Character;
-using TerraFlipper.Content.DamageClasses;
-using TerraFlipper.Content.ProjectTiles;
-using Terraria;
 using Terraria.GameInput;
 using Terraria.ModLoader;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace TerraFlipper.Common.Player
 {
@@ -24,9 +19,17 @@ namespace TerraFlipper.Common.Player
 				{
 					ShuiLeiMu.FangJiNeng(Player);
 				}
-				if (Player.armor[3].ToString().Contains("Shui Li Yu"))
+				else if (Player.armor[3].ToString().Contains("Shui Li Yu"))
 				{
 					ShuiLiYu.FangJiNeng(Player);
+				}
+				else if (Player.armor[3].ToString().Contains("Shui Yu Ki"))
+				{
+					ShuiYuKi.FangJiNeng(Player);
+				}
+				else if (Player.armor[3].ToString().Contains("Shui Da Nai"))
+				{
+					ShuiDaNai.FangJiNeng(Player);
 				}
 			}
 		}

@@ -19,14 +19,16 @@ namespace TerraFlipper.Content.ProjectTiles
 			// Total count animation frames
 			// 动画帧总数
 			Main.projFrames[Projectile.type] = 13;
+			
+
 		}
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 696; // The width of projectile hitbox
+			Projectile.width = 348; // The width of projectile hitbox
 									// 弹射物碰撞盒的宽度
 
-			Projectile.height = 576; // The height of projectile hitbox
+			Projectile.height = 288; // The height of projectile hitbox
 									 // 弹射物碰撞盒的高度
 
 			Projectile.friendly = true; // Can the projectile deal damage to enemies?
@@ -45,7 +47,9 @@ namespace TerraFlipper.Content.ProjectTiles
 									   // 
 
 			Projectile.alpha = 0; // How transparent to draw this projectile. 0 to 255. 255 is completely transparent.
-									// 如何透明地绘制此投掷体。0到255。 255是完全透明。
+								  // 如何透明地绘制此投掷体。0到255。 255是完全透明。
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = -1;
 		}
 
 		// Allows you to determine the color and transparency in which a projectile is drawn

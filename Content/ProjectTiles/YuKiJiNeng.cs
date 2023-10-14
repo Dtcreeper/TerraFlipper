@@ -7,17 +7,17 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.ProjectTiles
 {
-	public class LiYuJiNeng : ModProjectile
+	public class YuKiJiNeng : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			Main.projFrames[Projectile.type] = 23;//帧数
+			Main.projFrames[Projectile.type] = 25;//帧数
 		}
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 280; //图宽度
-			Projectile.height = 352; //图高度
+			Projectile.width = 336; //图宽度
+			Projectile.height = 336; //图高度
 			Projectile.friendly = true;
 			Projectile.DamageType = ModContent.GetInstance<ShuiDamage>(); // 伤害类型
 			Projectile.ignoreWater = false;
@@ -40,7 +40,7 @@ namespace TerraFlipper.Content.ProjectTiles
 				if (++Projectile.frame >= Main.projFrames[Projectile.type])
 					Projectile.frame = 0;
 			}
-			if (Projectile.ai[0] >= 138f)/*    X/60秒后消失    */
+			if (Projectile.ai[0] >= 150f)/*    X/60秒后消失    */
 				Projectile.Kill();
 			Projectile.direction = Projectile.spriteDirection = Projectile.velocity.X > 0f ? 1 : -1;
 			Projectile.rotation = Projectile.velocity.ToRotation();

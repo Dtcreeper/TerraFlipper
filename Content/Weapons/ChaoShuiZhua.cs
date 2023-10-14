@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using TerraFlipper.Common.Global;
 using TerraFlipper.Content.DamageClasses;
 using TerraFlipper.Content.ProjectTiles;
 using Terraria;
@@ -62,20 +63,8 @@ namespace TerraFlipper.Content.Weapons
 		public override void HoldItem(Player player)
 		{
 			//每有一个水属性角色+75攻刃
-			int a = 0;
-			if (player.armor[3].ToString().Contains("Shui"))
-			{
-				a += 1;
-			}
-			if (player.armor[4].ToString().Contains("Shui"))
-			{
-				a += 1;
-			}
-			if (player.armor[5].ToString().Contains("Shui"))
-			{
-				a += 1;
-			}
-			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += a*0.75f;
+			int a = Counter.ShuiJueSeShuLiang();
+			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += a * 0.75f;
 		}
 
 	}

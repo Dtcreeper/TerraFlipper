@@ -16,27 +16,23 @@ using TerraFlipper.Common.Buffs;
 
 namespace TerraFlipper.Content.Character
 {
-	public class ShuiLiYu : FlipperAccessory
+	public class ShuiYuKi : FlipperAccessory
 	{
-		// Fever状态中给予自身200攻刃100PF伤害。主动技给予自身20PF几率持续20秒。
-		public static readonly int Gongren = 200;
-		public static readonly int PF = 100;
-		public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(Gongren, PF);
+		// 浑身给予160技伤，主动给予15s120技伤8%奶（护盾）
+		public static readonly int Jishang1 = 160;
+		public static readonly int Jishang2 = 120;
+		public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(Jishang1 , Jishang2);
 
 		public override void SetDefaults()
 		{
-			Item.width = 112;
+			Item.width = 96;
 			Item.height = 96;
 			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			if (Fever.IsFever())
-			{
-				player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += Gongren/100f;
-				player.GetDamage(ModContent.GetInstance<PFDamage>()) += PF/100f;
-			}
+			player.GetDamage(ModContent.GetInstance<JiShangDamage>())+=(int)(Jishang1/100f*player.statLife / player.statLifeMax2);
 			Main.LocalPlayer.statLifeMax2 += 1000;
 		}
 
@@ -49,13 +45,12 @@ namespace TerraFlipper.Content.Character
 		}
 		public static void FangJiNeng(Player player)
 		{
-			player.AddBuff(ModContent.BuffType<PF_20>(), 1200);
-			Projectile.NewProjectile(player.GetSource_FromThis(), player.position, Vector2.One, ModContent.ProjectileType<LiYuJiNeng>(), 0, 0);
+			player.AddBuff(ModContent.BuffType<JiShang_120>(), 900);
+			Projectile.NewProjectile(player.GetSource_FromThis(), player.position, Vector2.One, ModContent.ProjectileType<YuKiJiNeng>(), 0, 0);
 		}
 		public override int GetElement()
 		{
 			return 2;
 		}
-
 	}
 }

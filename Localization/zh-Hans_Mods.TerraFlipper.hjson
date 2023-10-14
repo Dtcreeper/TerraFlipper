@@ -86,6 +86,26 @@ Items: {
 		// DisplayName: Shui Pang Xie Zi Bi
 		// Tooltip: ""
 	}
+
+	ShuiYuKi: {
+		// Tooltip: ""
+		// DisplayName: Shui Yu Ki
+	}
+
+	ShuiDaNai: {
+		// DisplayName: Shui Da Nai
+		// Tooltip: ""
+	}
+
+	ChaoShuiDun: {
+		// DisplayName: Chao Shui Dun
+		// Tooltip: ""
+	}
+
+	LiuXingChui: {
+		// DisplayName: Liu Xing Chui
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -98,6 +118,9 @@ Projectiles: {
 	// GoldStar_Shui.DisplayName: Gold Star_ Shui
 	// GrayStar_Shui.DisplayName: Gray Star_ Shui
 	// ShuiBaoDan.DisplayName: Shui Bao Dan
+	// YuKiJiNeng.DisplayName: Yu Ki Ji Neng
+	// ShuiDaNaiJiNeng.DisplayName: Shui Da Nai Ji Neng
+	// LiuXingChuiPT.DisplayName: Liu Xing Chui P T
 }
 
 Damages.BounceDamage.DisplayName: 弹射
@@ -121,6 +144,21 @@ Buffs: {
 	PF_20: {
 		// DisplayName: P F_20
 		// Description: Mods.TerraFlipper.Buffs.PF_20.Description
+	}
+
+	JiShang_120: {
+		// Description: Mods.TerraFlipper.Buffs.JiShang_120.Description
+		// DisplayName: Ji Shang_120
+	}
+
+	GongRen_100_1: {
+		// DisplayName: Gong Ren_100_1
+		// Description: Mods.TerraFlipper.Buffs.GongRen_100_1.Description
+	}
+
+	GongRen_50_1: {
+		// DisplayName: Gong Ren_50_1
+		// Description: Mods.TerraFlipper.Buffs.GongRen_50_1.Description
 	}
 }
 
