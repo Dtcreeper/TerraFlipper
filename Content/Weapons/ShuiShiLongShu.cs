@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using TerraFlipper.Common.Global;
 using TerraFlipper.Content.DamageClasses;
 using TerraFlipper.Content.ProjectTiles;
 using Terraria;
@@ -9,18 +10,18 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.Weapons
 {
-	public class ShuiShiLongShu : ModItem
+	public class ShuiShiLongShu : FlipperWeapons
 	{
 		// The Display Name and Tooltip of this item can be edited in the Localization/en-US_Mods.TerraFlipper.hjson file.
 
 		public override void SetDefaults()
 		{
-			Item.damage = 20;
-			Item.DamageType = ModContent.GetInstance<GongRenDamage>();
+			Item.damage = 4;
+			Item.DamageType = ModContent.GetInstance<ZhiJiDamage>();
 			Item.width = 34;
 			Item.height = 40;
-			Item.useTime = 55;
-			Item.useAnimation = 55;
+			Item.useTime = 15;
+			Item.useAnimation = 15;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 6;
 			Item.value = 50000;
@@ -48,15 +49,18 @@ namespace TerraFlipper.Content.Weapons
 			damage = player.GetWeaponDamage(this.Entity);
 			if (r <= crit / (4 + crit))
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, (velocity + Main.rand.NextVector2CircularEdge(1, 1)) * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, (velocity + Main.rand.NextVector2CircularEdge(1, 1)) * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
 			}
 			else if (r <= crit)
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, (velocity + Main.rand.NextVector2CircularEdge(1, 1)) * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, (velocity + Main.rand.NextVector2CircularEdge(1, 1)) * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
 			}
 			else
 			{
-				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ZhiJiDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback); ;
+				Projectile.NewProjectile(source, position, velocity + Main.rand.NextVector2CircularEdge(1, 1), type, (int)(damage * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, velocity + Main.rand.NextVector2CircularEdge(1, 1), type, (int)(damage * ShuiDamage.JiaCheng()), knockback);
 			}
 			return false;
 		}

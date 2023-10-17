@@ -106,6 +106,51 @@ Items: {
 		DisplayName: Liu Xing Chui
 		Tooltip: ""
 	}
+
+	ShuiLongQuan: {
+		DisplayName: Shui Long Quan
+		Tooltip: ""
+	}
+
+	Protostar_Rifle: {
+		DisplayName: Protostar_ Rifle
+		Tooltip: ""
+	}
+
+	Protostar_Bident: {
+		DisplayName: Protostar_ Bident
+		Tooltip: ""
+	}
+
+	FlipperWeapons: {
+		Tooltip: ""
+		DisplayName: Flipper Weapons
+	}
+
+	Protostar_Harpe: {
+		DisplayName: Protostar_ Harpe
+		Tooltip: ""
+	}
+
+	Protostar_Belt: {
+		DisplayName: Protostar_ Belt
+		Tooltip: ""
+	}
+
+	Protostar_Bow: {
+		DisplayName: Protostar_ Bow
+		Tooltip: ""
+	}
+
+	Protostar_Gauntlet: {
+		Tooltip: ""
+		DisplayName: Protostar_ Gauntlet
+	}
+
+	Protostar_Tome: {
+		DisplayName: Protostar_ Tome
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -121,6 +166,7 @@ Projectiles: {
 	YuKiJiNeng.DisplayName: Yu Ki Ji Neng
 	ShuiDaNaiJiNeng.DisplayName: Shui Da Nai Ji Neng
 	LiuXingChuiPT.DisplayName: Liu Xing Chui P T
+	LongQuanJiNeng.DisplayName: Long Quan Ji Neng
 }
 
 Damages.BounceDamage.DisplayName: BBB

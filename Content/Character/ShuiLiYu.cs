@@ -32,12 +32,12 @@ namespace TerraFlipper.Content.Character
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
+			Main.LocalPlayer.statLifeMax2 += 500;
 			if (Fever.IsFever())
 			{
 				player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += Gongren/100f;
 				player.GetDamage(ModContent.GetInstance<PFDamage>()) += PF/100f;
 			}
-			Main.LocalPlayer.statLifeMax2 += 1000;
 		}
 
 		public override void AddRecipes()

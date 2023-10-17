@@ -11,20 +11,17 @@ using TerraFlipper.Common.Global;
 
 namespace TerraFlipper.Content.Weapons
 {
-	// ExampleFlail and ExampleFlailProjectile show the minimum amount of code needed for a flail using the existing vanilla code and behavior. ExampleAdvancedFlail and ExampleAdvancedFlailProjectile need to be consulted if more advanced customization is desired, or if you want to learn more advanced modding techniques.
-	// ExampleFlail is a copy of the Sunfury flail weapon.
-	internal class LiuXingChui : ModItem
+	
+	internal class LiuXingChui : FlipperWeapons
 	{
 		public override void SetStaticDefaults()
 		{
-			// This line will make the damage shown in the tooltip twice the actual Item.damage. This multiplier is used to adjust for the dynamic damage capabilities of the projectile.
-			// When thrown directly at enemies, the flail projectile will deal double Item.damage, matching the tooltip, but deals normal damage in other modes.
 			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
 		}
 
 		public override void SetDefaults()
 		{
-			// These default values aside from Item.shoot match the Sunfury values, feel free to tweak them.
+			
 			Item.useStyle = ItemUseStyleID.Shoot; // How you use the item (swinging, holding out, etc.)
 			Item.useAnimation = 45; // The item's use time in ticks (60 ticks == 1 second.)
 			Item.useTime = 45; // The item's use time in ticks (60 ticks == 1 second.)
@@ -40,7 +37,7 @@ namespace TerraFlipper.Content.Weapons
 			Item.UseSound = SoundID.Item1; // The sound that this item makes when used
 			Item.rare = ItemRarityID.Orange; // The color of the name of your item
 			Item.value = Item.sellPrice(gold: 0, silver: 50); // Sells for 2 gold 50 silver
-			Item.DamageType = ModContent.GetInstance<GongRenDamage>(); // Deals melee damage
+			Item.DamageType = ModContent.GetInstance<ZhiJiDamage>(); // Deals melee damage
 			Item.channel = true;
 			Item.noMelee = true; // This makes sure the item does not deal damage from the swinging animation
 		}
@@ -55,7 +52,7 @@ namespace TerraFlipper.Content.Weapons
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			damage = player.GetWeaponDamage(this.Entity);
-			Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ZhiJiDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+			Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ShuiDamage.JiaCheng()), knockback);
 			return false;
 		}
 		//被动

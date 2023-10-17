@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using TerraFlipper.Common.Global;
 using TerraFlipper.Common.Player;
 using TerraFlipper.Content.DamageClasses;
 using TerraFlipper.Content.ProjectTiles;
@@ -10,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.Weapons
 {
-	public class LiuShuiRenJian : ModItem
+	public class LiuShuiRenJian : FlipperWeapons
 	{
 		// The Display Name and Tooltip of this item can be edited in the Localization/en-US_Mods.TerraFlipper.hjson file.
 
@@ -18,7 +19,7 @@ namespace TerraFlipper.Content.Weapons
 		{
 			Random random = new Random();
 			Item.damage = 65;
-			Item.DamageType = ModContent.GetInstance<GongRenDamage>();
+			Item.DamageType = ModContent.GetInstance<ZhiJiDamage>();
 			Item.width = 40;
 			Item.height = 40;
 			Item.useTime = 40;
@@ -50,15 +51,15 @@ namespace TerraFlipper.Content.Weapons
 			damage = player.GetWeaponDamage(this.Entity);
 			if (r <= crit / (4 + crit))
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng() / ZhiJiDamage.JiaCheng()), knockback);
 			}
 			else if (r <= crit)
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng() / ZhiJiDamage.JiaCheng()), knockback);
 			}
 			else
 			{
-				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ZhiJiDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback); ;
+				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ShuiDamage.JiaCheng()), knockback); ;
 			}
 			return false;
 		}

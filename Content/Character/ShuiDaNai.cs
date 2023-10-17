@@ -28,10 +28,11 @@ namespace TerraFlipper.Content.Character
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
+			Main.LocalPlayer.statLifeMax2 += 500;
 			int[] t = player.buffType;
 			int n = Counter.CounterBuffs(t);
 			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += (int)(GongRen3 * n / 5 / 100f);
-			Main.LocalPlayer.statLifeMax2 += 1000;
+			
 		}
 
 		public override void AddRecipes()

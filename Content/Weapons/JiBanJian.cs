@@ -11,23 +11,26 @@ namespace TerraFlipper.Content.Weapons
 {
 	public class JiBanJian : ModItem
 	{
-		// The Display Name and Tooltip of this item can be edited in the Localization/en-US_Mods.TerraFlipper.hjson file.
+		//160攻刃 40pf几率 100pf刃
+		public int GongRen = 160;
+		public int PFC = 40;
+		public int PF = 100;
 
 		public override void SetDefaults()
 		{
 			Item.damage = 195;
-			Item.DamageType = ModContent.GetInstance<GongRenDamage>();
+			Item.DamageType = ModContent.GetInstance<ZhiJiDamage>();
 			Item.width = 44;
 			Item.height = 44;
-			Item.useTime = 16;
-			Item.useAnimation = 16;
+			Item.useTime = 14;
+			Item.useAnimation = 14;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 6;
 			Item.value = 20000000;
 			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
-			Item.crit = -4;
+			Item.crit = 0;
 			Item.shoot = ModContent.ProjectileType<GrayStar_Shui>();
 			Item.shootSpeed = 5f;
 			Item.attackSpeedOnlyAffectsWeaponAnimation = false;
@@ -46,27 +49,27 @@ namespace TerraFlipper.Content.Weapons
 			double crit = player.GetCritChance(ModContent.GetInstance<GongRenDamage>());
 			Random random = new Random();
 			double r = random.NextDouble();
-			//判断强力弹射
-			if (r <= crit / (PFDamage.PFChance + crit))
+			damage = player.GetWeaponDamage(this.Entity);
+			if (r <= crit / (4 + crit))
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng() / ZhiJiDamage.JiaCheng()), knockback);
 			}
 			else if (r <= crit)
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1S, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng() / ZhiJiDamage.JiaCheng()), knockback);
 			}
 			else
 			{
-				Projectile.NewProjectile(source, position, velocity, type, damage, knockback); ;
+				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ShuiDamage.JiaCheng()), knockback); ;
 			}
-			Console.WriteLine(crit);
 			return false;
-
 		}
 		//增加攻刃
 		public override void HoldItem(Player player)
 		{
-			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += 1.6f;
+			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += GongRen / 100f;
+			player.GetDamage(ModContent.GetInstance<PFDamage>()) += PF / 100f;
+			player.GetCritChance(ModContent.GetInstance<GongRenDamage>()) += PFC / 100f;
 		}
 
 

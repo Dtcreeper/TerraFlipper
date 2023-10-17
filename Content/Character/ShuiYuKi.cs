@@ -32,8 +32,9 @@ namespace TerraFlipper.Content.Character
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
+			Main.LocalPlayer.statLifeMax2 += 500;
 			player.GetDamage(ModContent.GetInstance<JiShangDamage>())+=(int)(Jishang1/100f*player.statLife / player.statLifeMax2);
-			Main.LocalPlayer.statLifeMax2 += 1000;
+			
 		}
 
 		public override void AddRecipes()

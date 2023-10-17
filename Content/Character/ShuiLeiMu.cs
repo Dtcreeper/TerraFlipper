@@ -31,7 +31,7 @@ namespace TerraFlipper.Content.Character
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			//技伤+150（浑身），攻刃+100（浑身），
-			Main.LocalPlayer.statLifeMax2 += 1000;
+			Main.LocalPlayer.statLifeMax2 += 500;
 			float hp = Main.LocalPlayer.statLife / Main.LocalPlayer.statLifeMax2;
 			player.GetDamage(ModContent.GetInstance<GongRenDamage>()) += Gongren * hp / 100f;
 			player.GetDamage(ModContent.GetInstance<JiShangDamage>()) += Jishang * hp / 100f;
@@ -52,7 +52,7 @@ namespace TerraFlipper.Content.Character
 			int beilv = 28;
 			Vector2 p = Main.MouseScreen + Main.screenPosition - player.position;
 			Vector2 velocity = 20f * p / p.Length();
-			int damage = (int)(player.GetTotalDamage(ModContent.GetInstance<ShuiDamage>()).ApplyTo(100*beilv) * GongRenDamage.JiaCheng()*JiShangDamage.JiaCheng());
+			int damage = (int)(player.GetTotalDamage(ModContent.GetInstance<ShuiDamage>()).ApplyTo(JiNeng1.GongJi*beilv) * GongRenDamage.JiaCheng()*JiShangDamage.JiaCheng());
 			Projectile.NewProjectile(player.GetSource_FromThis(), player.position, velocity, ModContent.ProjectileType<LeiMuJiNeng>(), damage, 0);
 		}
 		public override int GetElement()

@@ -11,38 +11,37 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.Accessories
 {
-	public class ChaoShuiDun : FlipperAccessory
+	public class Protostar_Rifle : FlipperAccessory
 	{
-		// 每装备一个水属性角色，最大hp*1.2&防御+20
-		public static readonly int HP = 20;
-		public static readonly int FangYu = 20;
-		public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(HP, FangYu);
+		// pf概率+10，pf伤害+20
+		public static readonly int PFC = 10;
+		public static readonly int PF = 20;
+		public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(PFC, PF);
 
 		public override void SetDefaults()
 		{
-			Item.width = 36;
-			Item.height = 42;
+			Item.width = 40;
+			Item.height = 40;
 			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			int a = Counter.ShuiJueSeShuLiang();
-			player.statLifeMax2 =(int)(Math.Pow((HP/100f+1) , a)*player.statLifeMax2);
-			player.statDefense += FangYu * a;
+			player.GetCritChance(ModContent.GetInstance<GongRenDamage>()) += PFC / 100f;
+			player.GetDamage(ModContent.GetInstance<PFDamage>()) += PF / 100f;
 		}
 
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 1);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(ItemID.IronBar, 10);
+			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
 		
 		public override int GetElement()
 		{
-			return 2;
+			return 0;
 		}
 	}
 }

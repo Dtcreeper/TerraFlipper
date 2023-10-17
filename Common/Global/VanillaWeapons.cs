@@ -1,6 +1,9 @@
-﻿using TerraFlipper.Content.DamageClasses;
+﻿using Microsoft.Xna.Framework;
+using TerraFlipper.Content.DamageClasses;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace TerraFlipper.Common.Global
 {
@@ -37,6 +40,21 @@ namespace TerraFlipper.Common.Global
 			{
 				entity.DamageType = ModContent.GetInstance<ZhiJiDamage>();
 			}
+		}
+		public override void ModifyHitNPC(Item item, Terraria.Player player, NPC target, ref NPC.HitModifiers modifiers)
+		{
+			
+			modifiers.FinalDamage *= GongRenDamage.JiaCheng();//近战修改
+			
+
+		}
+		public override void ModifyShootStats(Item item, Terraria.Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		{
+			
+			damage = (int)(damage * GongRenDamage.JiaCheng());
+			
+			//Projectile.NewProjectile(player.GetSource_FromThis(), position, velocity, type, damage, knockback);
+
 		}
 	}
 }

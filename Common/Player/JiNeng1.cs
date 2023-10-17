@@ -7,6 +7,7 @@ namespace TerraFlipper.Common.Player
 {
 	public class JiNeng1 : ModPlayer
 	{
+		public static int GongJi = 100;
 		public override void ProcessTriggers(TriggersSet triggersSet)
 		{
 			if (Key1.JiNeng1.JustPressed)
@@ -30,6 +31,10 @@ namespace TerraFlipper.Common.Player
 				else if (Player.armor[3].ToString().Contains("Shui Da Nai"))
 				{
 					ShuiDaNai.FangJiNeng(Player);
+				}
+				else if (Player.armor[3].ToString().Contains("Shui Long Quan"))
+				{
+					ShuiLongQuan.FangJiNeng(Player);
 				}
 			}
 		}

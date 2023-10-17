@@ -10,12 +10,12 @@ using Terraria.ModLoader;
 
 namespace TerraFlipper.Content.Weapons
 {
-	public class ChaoShuiZhua : ModItem
+	public class ChaoShuiZhua : FlipperWeapons
 	{
 		public override void SetDefaults()
 		{
 			Item.damage = 35;
-			Item.DamageType = ModContent.GetInstance<GongRenDamage>();
+			Item.DamageType = ModContent.GetInstance<ZhiJiDamage>();
 			Item.width = 34;
 			Item.height = 40;
 			Item.useTime = 25;
@@ -47,15 +47,15 @@ namespace TerraFlipper.Content.Weapons
 			damage = player.GetWeaponDamage(this.Entity);
 			if (r <= crit / (4 + crit))
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF2S, ModContent.ProjectileType<ColorfulStar_Shui>(), (int)(damage * PFDamage.PF2D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng() / ZhiJiDamage.JiaCheng()), knockback);
 			}
 			else if (r <= crit)
 			{
-				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback);
+				Projectile.NewProjectile(source, position, velocity * PFDamage.PF1D, ModContent.ProjectileType<GoldStar_Shui>(), (int)(damage * PFDamage.PF1D * PFDamage.JiaCheng() * ShuiDamage.JiaCheng() / ZhiJiDamage.JiaCheng()), knockback);
 			}
 			else
 			{
-				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ZhiJiDamage.JiaCheng() * ShuiDamage.JiaCheng()), knockback); ;
+				Projectile.NewProjectile(source, position, velocity, type, (int)(damage * ShuiDamage.JiaCheng()), knockback); ;
 			}
 			return false;
 		}
